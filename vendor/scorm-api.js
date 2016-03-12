@@ -1,5 +1,7 @@
 /*global console*/
 
+
+
 /* ===========================================================
 
 pipwerks SCORM Wrapper for JavaScript
