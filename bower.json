@@ -21,6 +21,6 @@
   ],
   "dependencies": {
     "jquery": "^2.2.1",
-    "SCORM_API_wrapper": "https://github.com/pipwerks/scorm-api-wrapper/blob/master/src/JavaScript/SCORM_API_wrapper.js"
+  
   }
 }
