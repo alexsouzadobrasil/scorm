@@ -1,0 +1,30 @@
+
+      @font-face {
+    font-family: 'jfrocsol';
+    src: url('font/jfrocsol-webfont.eot');
+    src: url('font/jfrocsol-webfont.eot') format('embedded-opentype'),
+         url('font/jfrocsol-webfont.ttf') format('truetype'),
+         url('font/jfrocsol-webfont.otf') format('opentype'),
+         url('font/jfrocsol-webfont.woff') format('woff'),
+         url('font/jfrocsol-webfont.svg#VAGRoundedStdLight') format('svg');
+} 
+    @font-face {
+    font-family: 'jfrocout';
+    src: url('font/jfrocout-webfont.eot');
+    src: url('font/jfrocout-webfont.eot') format('embedded-opentype'),
+         url('font/jfrocout-webfont.ttf') format('truetype'),
+         url('font/jfrocout-webfont.otf') format('opentype'),
+         url('font/jfrocout-webfont.woff') format('woff'),
+         url('font/jfrocout-webfont.svg#VAGRoundedStdLight') format('svg');
+} 
+         #canvas {    
+            font-family: MJFRocSol;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+      }
+      body {
+         overflow-x: hidden; 
+         overflow-y: hidden; 
+         background-color: white;
+      }

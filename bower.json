@@ -1,0 +1,26 @@
+{
+  "name": "scorm",
+  "authors": [
+    "alex souza <sant.ale@hotmail.com>"
+  ],
+  "description": "primeiro teste para uso do scrom no moodle.",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "scrom",
+    "moodle"
+  ],
+  "license": "MIT",
+  "homepage": "www.gurucow.com.br",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "SCORM_API_wrapper": "https://github.com/pipwerks/scorm-api-wrapper/blob/master/src/JavaScript/SCORM_API_wrapper.js"
+  }
+}
