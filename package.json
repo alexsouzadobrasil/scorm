@@ -1,0 +1,29 @@
+{
+  "name": "scorm html5",
+  "version": "0.0.1",
+  "description": "oeds insert moodle",
+  "private": true,
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "karma start --single-run --browsers Chrome client/tests/karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexsouzadobrasil/scorm.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "karma": "~0.12",
+    "karma-chrome-launcher": "~0.1",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "^0.1.2"
+  },
+  "contributors": [
+    "alex souza <sant.ale@hotmail.com> (http://gurucow.com.br/)"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
