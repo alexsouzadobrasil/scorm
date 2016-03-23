@@ -1,3 +1,93 @@
+api = {
+    pontosMeta: 0,
+    tempoTotal: 0,
+    pontos: 0,
+    status: 'not attempted',
+    
+    initSCORM: function(tempoTotal, pontosMeta) {
+        this.tempoTotal = tempoTotal;
+        this.pontosMeta = pontosMeta;
+        apiCall('initialize');
+
+        this.status = apiCall("getValue", "cmi.core.lesson_status");
+        if (this.status == "not attempted") {
+            this.statusDaLicaoNoLMS("incomplete");
+        }
+
+        window.onbeforeunload = this.pageUnload;
+    },
+
+
+    pontosDoQuizLoopInt: function(pontos) {
+        this.pontos += pontos;        
+
+        if (apiVersion >= 1) {
+            var lmsPontosInt;
+            var lmsPontos = apiCall('getValue', 'cmi.scaled_passing_score'); //0.0 or 1.0
+            console.log(lmsPontos);
+            apiCall('setValue', 'cmi.score.min', 0);
+            apiCall('setValue', 'cmi.score.max', 100);
+            apiCall('setValue', 'cmi.score.raw', this.pontos);
+            apiCall('setValue', 'cmi.score.scaled', this.pontos / 100);
+            apiCall('commit');
+
+
+            if (this.pontos >= this.pontosMeta) {//pode usar o lmsPontoInt Mas n sei pq n retorna valor
+                apiCall('setValue', 'cmi.success_status', 'passed');
+                apiCall('commit');
+                show('passed');
+            } else {
+                apiCall('setValue', 'cmi.success_status', 'failed');
+                apiCall('commit');
+                show('failed');
+            }
+
+        } else {
+            var lmsPontosInt;
+            var lmsPontos = apiCall('getValue', 'cmi.student_data.mastery_score');
+            console.log(lmsPontos);
+            show('api < 1');        
+            apiCall('setValue', 'cmi.core.score.min', '0');
+            apiCall('setValue', 'cmi.core.score.max', '100');
+            apiCall('setValue', 'cmi.core.score.raw', this.pontos);
+            apiCall('setValue', 'cmi.core.score.scaled', this.pontos / 100);
+            apiCall('commit');
+
+            if (this.pontos >= this.pontosMeta) {
+                apiCall('setValue', 'cmi.core.lesson_status', 'passed');
+                apiCall('commit');
+                this.statusDaLicaoNoLMS('completed');
+                show('passed');
+            } else {
+                apiCall('setValue', 'cmi.core.lesson_status', 'failed');
+                apiCall('commit');
+                show('failed');
+            }
+        }
+        console.log(this.pontos);
+        apiCall('commit');        
+    },
+    statusDaLicaoNoLMS: function(stringStatus) { //'incomplete'/completed/not attempted
+        apiCall('setValue', 'cmi.core.lesson_status', stringStatus);
+        apiCall('commit');
+    },
+    pageUnload: function() {
+        var lmsStatus = apiCall('getValue', 'cmi.core.lesson_status');
+        if (lmsStatus == 'passed') {
+            apiCall('setValue', 'cmi.core.lesson_status', 'completed');
+            apiCall('commit');
+            // console.log('completed');
+        } else if (lmsStatus == 'not attempted') {
+            //console.warn("você esta abandonando a licão.");
+        } else if (lmsStatus == 'incomplete') {
+            //console.warn("volte mais tarde para completar a licão.");
+        }
+        apiCall('terminate');
+    }
+
+};
+
+
 /*global console*/
 
 

@@ -31,5 +31,16 @@
     "alex souza <sant.ale@hotmail.com> (http://gurucow.com.br/)"
   ],
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "bugs": {
+    "url": "https://github.com/alexsouzadobrasil/scorm/issues"
+  },
+  "homepage": "https://github.com/alexsouzadobrasil/scorm#readme",
+  "main": "Gruntfile.js",
+  "dependencies": {},
+  "keywords": [
+    "scorm",
+    "moodle",
+    "oeds"
+  ],
+  "author": "alex souza"
 }
